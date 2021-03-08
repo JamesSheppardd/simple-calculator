@@ -5,12 +5,12 @@ interface ButtonType {
 }
 
 const MiscButton = (props:ButtonType) => {
-    const topBar: any = document.getElementById("calculation-bar-input") 
 
     const determineAction = () => {
+        const topBar: any = document.getElementById("calculation-bar-input");
         switch(props.type){
             case ".": 
-                writeValueInBar();
+                writeValueInBar(topBar);
                 break;
             case "clear": 
                 topBar.value = null;
@@ -18,8 +18,9 @@ const MiscButton = (props:ButtonType) => {
         }
     }
 
-    const writeValueInBar = () => {
-        topBar ? topBar.value += props.type : null;
+    const writeValueInBar = (top: any) => {
+        top ? top.value += props.type : null;
+        top && console.log(props.type);
     }
 
     return (

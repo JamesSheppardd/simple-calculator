@@ -5,9 +5,11 @@ interface Numbers {
 }
 
 const NumberButton = (props:Numbers) => {
-    const topBar: any = document.getElementById("calculation-bar-input") 
+    
     const writeValueInBar = () => {
+        const topBar: any = document.getElementById("calculation-bar-input");
         topBar ? topBar.value += props.number : null;
+        console.log(props.number);
     }
 
     return (

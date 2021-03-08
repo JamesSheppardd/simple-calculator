@@ -5,16 +5,18 @@ interface ButtonType {
 }
 
 const OperatorButton = (props:ButtonType) => {
-    const topBar: any = document.getElementById("calculation-bar-input") 
 
     const finalAnswer = () => {
+        const topBar: any = document.getElementById("calculation-bar-input") 
         topBar.value = eval(topBar.value);  // eval BIG NO without any checking to see if is just numbers inputted - can run any js/ts code
         console.log(topBar.value)
     }
 
     const writeValueInBar = () => {
+        const topBar: any = document.getElementById("calculation-bar-input");
         if(props.type !== "="){
             topBar ? topBar.value += ` ${props.type} ` : null;
+            console.log(props.type);
         }
         switch(props.type){
             case "=": finalAnswer();
