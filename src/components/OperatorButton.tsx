@@ -7,15 +7,16 @@ interface ButtonType {
 const OperatorButton = (props:ButtonType) => {
 
     const finalAnswer = () => {
-        const topBar: any = document.getElementById("calculation-bar-input") 
-        topBar.value = eval(topBar.value);  // eval BIG NO without any checking to see if is just numbers inputted - can run any js/ts code
-        console.log(topBar.value)
+        const topBar: any = document.getElementById("values");
+        console.log(topBar.innerHTML);
+        topBar.innerHTML = eval(topBar.innerHTML);  // eval BIG NO without any checking to see if is just numbers inputted - can run any js/ts code
+        
     }
 
     const writeValueInBar = () => {
-        const topBar: any = document.getElementById("calculation-bar-input");
+        const topBar: any = document.getElementById("values");
         if(props.type !== "="){
-            topBar ? topBar.value += ` ${props.type} ` : null;
+            topBar ? topBar.innerHTML += props.type : null;
             console.log(props.type);
         }
         switch(props.type){

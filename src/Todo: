@@ -1,4 +1,0 @@
-Todo:
-- possible workaround for eval - mathjs math.eval???
-- checks that the inputted things are just numbers or operators
-- make the topBar not an input bar, but a styled div

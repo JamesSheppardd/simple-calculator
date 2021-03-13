@@ -2,24 +2,22 @@ import React from "react";
 
 interface ButtonType {
     type: string;
+    func: Function;
 }
 
 const MiscButton = (props:ButtonType) => {
 
     const determineAction = () => {
-        const topBar: any = document.getElementById("calculation-bar-input");
-        switch(props.type){
-            case ".": 
-                writeValueInBar(topBar);
-                break;
-            case "clear": 
-                topBar.value = null;
-                break;
+        const topBar: any = document.getElementById("values");
+        if(props.func() === null){
+            writeValueInBar(topBar);
+        } else {
+            props.func();
         }
     }
 
     const writeValueInBar = (top: any) => {
-        top ? top.value += props.type : null;
+        top ? top.innerHTML += props.type : null;
         top && console.log(props.type);
     }
 

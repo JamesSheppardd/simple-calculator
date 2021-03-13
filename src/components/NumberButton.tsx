@@ -7,8 +7,8 @@ interface Numbers {
 const NumberButton = (props:Numbers) => {
     
     const writeValueInBar = () => {
-        const topBar: any = document.getElementById("calculation-bar-input");
-        topBar ? topBar.value += props.number : null;
+        const topBar: any = document.getElementById("values");
+        topBar ? topBar.innerHTML += props.number : null;
         console.log(props.number);
     }
 
