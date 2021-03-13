@@ -1,9 +1,12 @@
 import React from 'react';
 
-const CalculationBar = () => {
+const CalculationBar = (props: any) => {
+
     return (
         <div className="calculation-bar">
-            <input id="calculation-bar-input" placeholder="0" type="text"></input>
+            <div id="calculation-bar-input">
+                <span id="values"></span>
+            </div>
         </div>
     )
 }
