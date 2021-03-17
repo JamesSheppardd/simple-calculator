@@ -11,10 +11,11 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import path from 'path';
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import MenuBuilder from './menu';
+const { menu } = require("./menu");
+const Store = require("./store.js");
 
 export default class AppUpdater {
   constructor() {
@@ -69,11 +70,15 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 680,
-    height: 600,
+    width: 597,
+    height: 492,
+    resizable: false,
+    frame: false,
+    title: "Calculator",
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true
     },
   });
 
@@ -96,9 +101,6 @@ const createWindow = async () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
-
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
 
   // Open urls in the user's browser
   mainWindow.webContents.on('new-window', (event, url) => {
@@ -129,4 +131,14 @@ app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow();
+});
+
+ipcMain.on(`display-app-menu`, function(e, args) {
+  if (mainWindow) {
+    menu.popup({
+      window: mainWindow,
+      x: args.x,
+      y: args.y
+    });
+  }
 });
