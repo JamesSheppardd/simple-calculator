@@ -2,21 +2,17 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
-html {
+ 
+html{
   margin: 0;
   padding: 0;
 }
 
 body {
   height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
+  background: var(--background);
   font-family: sans-serif;
-  overflow-y: hidden;
+  overflow: hidden;
   display: flex;
 }
 
@@ -25,10 +21,11 @@ body {
   display: flex;
   left: 10px;
   right: 10px;
-  top: 15px;
+  top: 45px;
   height: 50px;
-  background-color: white;
+  background-color: var(--calc-bar-colour);
   border-radius: 8px;
+  color: var(--calc-text)
 }
 
 #calculation-bar-input {
@@ -45,20 +42,6 @@ body {
   border-radius: 8px;
 }
 
-#placeholder {
-  color: #646464;
-  font-style: italic;
-}
-
-.number-buttons {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  top: 50px;
-  width: 300px;
-}
-
 .button-div {
   padding-top: 15px;
   padding-right: 15px;
@@ -69,11 +52,91 @@ body {
   padding: 10px 0px;
   width: 80px;
   border: none;
-  background: #ffffff;
+  background: var(--button-colour);
   transition-duration: 0.4s;
   border-radius: 8px;
+  color: var(--button-text);
 }
 
 .button:hover {
-  background: #d8d8d8;
+  background: var(--button-hover);
+}
+
+.all-buttons {
+  position: absolute;
+  top: 100px;
+  width: 100vw;
+}
+
+.number-buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  right: 10px;
+  width: 300px;
+}
+.num-button{
+}
+
+.operator-buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  right: 10px;
+  top: 252px;
+  width: 300px;
+}
+
+.misc-buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 300px;
+}
+
+.button-0 {
+  width: 270px;
+}
+
+
+
+#menu-bar {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-app-region: drag;
+}
+
+#menu-bar > div {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.menubar-btn {
+  -webkit-app-region: no-drag;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition-duration: 0.3s;
+  border-radius: 4px;
+}
+
+#close-btn:hover {
+  background: rgb(255, 0, 0);
+}
+
+button i {
+  color: white;
 }

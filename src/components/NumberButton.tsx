@@ -2,19 +2,19 @@ import React, { BaseSyntheticEvent } from "react";
 
 interface Numbers {
     number: number;
+    placeValue: Function;
+    id: string;
 }
 
 const NumberButton = (props:Numbers) => {
     
     const writeValueInBar = () => {
-        const topBar: any = document.getElementById("values");
-        topBar ? topBar.innerHTML += props.number : null;
-        console.log(props.number);
+        props.placeValue(props.number.toString());
     }
 
     return (
         <div className="button-div number-button">
-            <button className="button" onClick={writeValueInBar}>{props.number}</button>
+            <button className={`button button-${props.id} num-button`} onClick={writeValueInBar}>{props.number}</button>
         </div>
     )
 }
