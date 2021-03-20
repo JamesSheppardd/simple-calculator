@@ -1,12 +1,1 @@
 Todo:
-- possible workaround for eval - mathjs math.eval???
-- settings:
-    - theme:
-        > default
-        > dark
-        > light
-    - 
-
-- Basicallllllllllllllllllllly I am trying to make the menu options radios change the theme, but shits
-kinda not working, and am tryna do it in app.tsx, but Menu (from electron) is undefined - that shouldn't 
-happen?????? idk

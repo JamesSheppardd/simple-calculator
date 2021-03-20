@@ -10,15 +10,18 @@ const OperatorButton = (props:ButtonType) => {
 
     const finalAnswer = () => {
         const topBar: any = document.getElementById("values");
-        console.log(topBar.innerHTML);
+        try{
         const val: string = topBar.innerHTML.split("").filter((char: string) => char !== "|").join("");
         topBar.innerHTML = mexp.eval(val);  // eval BIG NO without any checking to see if is just numbers inputted - can run any js/ts code
-        
+        } catch(e){
+            console.log(e);
+        }
     }
 
-    const writeValueInBar = () => {
+    const writeValueInBar = (event:any) => {
         if(props.type !== "="){
             props.placeValue(props.type);
+            event.target.blur();
         }
         else{
             finalAnswer(); 

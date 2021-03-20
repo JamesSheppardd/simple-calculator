@@ -12,18 +12,27 @@ import { remote, Menu } from "electron";
 import fs from "fs";
 import path from "path";
 
+
+
+
 // start at position 0 of array
 let calcPosition: number = 0;
+let lastAnswer: number = 0;
 
 // Type in values when not selecting input box
 const calculate = () => {
   const topBar: any = document.getElementById("values");
   let val: any = topBar.innerHTML;
   if(val){
-    val = val.split("").filter((char: string) => char !== "|").join(""); // filter out the | indicator
-    topBar.innerHTML = `${mexp.eval(val)}`;  // eval BIG NO without any checking to see if is just numbers inputted - can run any js/ts code
-    console.log(mexp.eval(val));
-    calcPosition = topBar.innerHTML.length;
+    try{
+      val = val.split("").filter((char: string) => char !== "|").join(""); // filter out the | indicator
+      topBar.innerHTML = `${mexp.eval(val)}`;  // eval BIG NO without any checking to see if is just numbers inputted - can run any js/ts code
+      lastAnswer = topBar.innerHTML;
+      calcPosition = topBar.innerHTML.length;
+    }
+    catch(e) {
+      console.log(e)
+    }
   }
 }
 const deleteChar = () => {
@@ -75,7 +84,12 @@ const placeNewValue = (key: string) => {
   })
   topBar.innerHTML = value.join("");
 }
+const getLastAnswer = () => {
+  const topBar: any = document.getElementById("values");
+  topBar.innerHTML = lastAnswer;
+}
 
+// Adding keyboard shortcuts 
 document.addEventListener("keydown", e => {
   const key = e.key;
   if(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0","-", "+", "/", "*", "(", ")", "."].includes(key)) {
@@ -122,23 +136,20 @@ document.addEventListener("keydown", e => {
   }
   else if (key.toLowerCase() === "%") {
     placeNewValue("(0.01*");
+  }
+  else if(key.toLowerCase() === "arrowup"){
+    getLastAnswer();
+  }
+  else if(key.toLowerCase() === "arrowdown"){
+    const topBar: any = document.getElementById("values");
+    topBar.innerHTML = "";
   };
+  
 })
 
+
 const Main = () => {
-  const [values, setValues] = useState("1");
-
-  const handleValues = () => {
-    const valueSpan: any = document.getElementById("values");
-    const value: string = valueSpan?.innerHTML;
-    setValues(() => value)
-  }
-
-  if(values !== document.getElementById("values")?.innerHTML){
-    handleValues();
-  }
-
-  // Storage
+  // Getting user-preferences -> stored in (disk):\Users\(username))\AppData\Roaming\Electron\user-preferences
   const getStore = (filePath: any) => {
     try {
       return JSON.parse(fs.readFileSync(filePath));
@@ -146,9 +157,9 @@ const Main = () => {
       return "default";
     }
   }
-  // Theme function
+
+  // Setting the theme
   const setTheme = (theme: string) => {
-    //console.log(Menu.getApplicationMenu());
     let thisTheme: any = themes.allThemes.normal;
     const setCssProperty = document.body.style;
     if (theme === "default"){
@@ -182,7 +193,7 @@ const Main = () => {
     setCssProperty.setProperty("--menubar-colour", thisTheme.menubar);
   }
 
-  // themes
+  // Setting the theme
   useEffect(() => {
     const theme: any = getStore(path.join(remote.app.getPath("userData"), "user-preferences" + ".json"));
     const newTheme:string = theme.appData.theme;
@@ -197,7 +208,7 @@ const Main = () => {
 
   return (
     <div>
-      <CalculationBar {...handleValues} {...values}></CalculationBar>
+      <CalculationBar></CalculationBar>
 
       <div className="all-buttons">
         <div className="number-buttons">

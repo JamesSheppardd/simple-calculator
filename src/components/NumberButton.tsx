@@ -8,7 +8,8 @@ interface Numbers {
 
 const NumberButton = (props:Numbers) => {
     
-    const writeValueInBar = () => {
+    const writeValueInBar = (event: any) => {
+        event.target.blur();
         props.placeValue(props.number.toString());
     }
 

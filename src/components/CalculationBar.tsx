@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CalculationBar = (props: any) => {
+const CalculationBar = () => {
 
     return (
         <div className="calculation-bar">

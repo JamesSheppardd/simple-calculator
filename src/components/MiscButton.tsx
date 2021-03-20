@@ -10,7 +10,8 @@ interface ButtonType {
 
 const MiscButton = (props:ButtonType) => {
 
-    const determineAction = () => {
+    const determineAction = (event: any) => {
+        event.target.blur();
         const topBar: any = document.getElementById("values");
         if(props.func() === null){
             props.placeValue(props.value);
