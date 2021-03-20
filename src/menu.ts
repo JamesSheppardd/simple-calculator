@@ -12,7 +12,8 @@ const store: any = new Store({
     appData: { theme: "default", checked: "default" }
   }
 });
-
+console.log(store);
+store.set("appData", { "theme": store.data.appData.theme, "checked": store.data.appData.checked });
 const determineChecked = (item: string) => {
   if(item === store.get().appData.checked){
     return true;
