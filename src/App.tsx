@@ -143,7 +143,7 @@ document.addEventListener("keydown", e => {
   else if(key.toLowerCase() === "arrowdown"){
     const topBar: any = document.getElementById("values");
     topBar.innerHTML = "";
-  };
+  }
   
 })
 

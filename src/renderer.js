@@ -1,9 +1,6 @@
 const {
   openMenu,
   minimizeWindow,
-  unmaximizeWindow,
-  maxUnmaxWindow,
-  isWindowMaximized,
   closeWindow,
 } = require("./menu-functions.js")
 

@@ -5,26 +5,26 @@ const {
     minimizeWindow,
     closeWindow
 } = require("./menu-functions.js");
-const Store = require("./store.js");
-const path = require("path");
-const fs = require("fs");
 
-console.log("data: " + JSON.parse(fs.readFileSync(path.join(remote.app.getPath("userData"), "user-preferences" + ".json"))))
 
-if(JSON.parse(fs.readFileSync(path.join(remote.app.getPath("userData"), "user-preferences" + ".json"))) === ""){
-    console.log("New config file")
-    new Store({
-        // We'll call our data file 'user-preferences'
-        configName: 'user-preferences',
-        defaults: {
-          appData: { theme: "default", checked: "default" }
-        }
-      });
-}
-
-app.addEventListener("DOMContentLoaded", () => {
-    app.getCurrentWindow = getCurrenWindow;
-    app.openMenu = openMenu;
-    app.minimizeWindow = minimizeWindow;
-    app.closeWindow = closeWindow;
+window.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-btn");
+    const closeButton = document.getElementById("close-btn");
+  
+    menuButton?.addEventListener("click", e => {
+      // Opens menu at (x,y) coordinates of mouse click on the hamburger icon.
+      openMenu(e.x, e.y);
+    });   
+  
+    closeButton?.addEventListener("click", e => {
+      closeWindow();
+      console.log("close")
+    });
+  });
+  
+remote.app.addEventListener("DOMContentLoaded", () => {
+    remote.app.getCurrentWindow = getCurrenWindow;
+    remote.app.openMenu = openMenu;
+    remote.app.minimizeWindow = minimizeWindow;
+    remote.app.closeWindow = closeWindow;
 });

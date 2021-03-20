@@ -1,7 +1,6 @@
 import { BrowserWindow, remote } from "electron";
 
 const { Menu, app } = require("electron");
-const themes = require("./common/themes")
 const isMac = process.platform === "darwin";
 const Store = require("./store.js");
 
@@ -21,7 +20,6 @@ const determineChecked = (item: string) => {
   return false;
 }
 
-//let theme: string = store.get("appData").theme;
 const template = [
   {
     label: "File",
