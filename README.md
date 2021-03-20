@@ -28,3 +28,12 @@ I used the [math expression evaluator's](https://www.npmjs.com/package/math-expr
 - 'w' for cos
 - 'e' for tan
 - '!' for factorial
+
+## Screenshots
+To change the theme click the hamburger icon in the top left and go to 'options', then choose the theme
+
+![Default Theme](./assets/readme_images/calculator2.png)
+
+![Dark Purple Theme](./assets/readme_images/calculator1.png)
+
+![Gameboy Theme](./assets/readme_images/calculator3.png)
