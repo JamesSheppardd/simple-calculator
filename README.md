@@ -1,3 +1,5 @@
+[![MIT License][license-shield]][license-url]
+
 # A simple calculator created with react and electron
 
 This is a standalone Electron app created with ReactJS and written is JavaScript and TypeScript
