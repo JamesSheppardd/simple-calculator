@@ -3,7 +3,7 @@
 This is a standalone Electron app created with ReactJS and written is JavaScript and TypeScript
 
 ## Installation
-1. [Download the latest release](https://github.com/JamesSheppardd/simple-calculator/releases) - for Windows systems download the xip called 'calculatorv' followed by version, and for Linux systems download the zip ending in 'Linux'
+1. [Download the latest release](https://github.com/JamesSheppardd/simple-calculator/releases) - for Windows systems download the zip called 'calculatorv' followed by version, and for Linux systems download the zip ending in 'Linux'
 2. Unzip the 'release' folder
 3. Run the file named 'Calculator Setup (version).exe' for windows, or 'calculator_1.0.0_amd64.deb' for Linux, then install when the software installer opens.
 4. On linux to run open your terminal and run 'calculator', or windows just search for 'calculator' and save the a shortcut to the file somewhere accessible such as your desktop
