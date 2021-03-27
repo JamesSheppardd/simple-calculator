@@ -1,6 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-
-# A simple calculator created with react and electron
+# A simple calculator created with react and electron [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 This is a standalone Electron app created with ReactJS and written is JavaScript and TypeScript
 
