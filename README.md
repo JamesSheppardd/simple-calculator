@@ -1,4 +1,4 @@
-[![MIT License][license-shield]][license-url]
+[![License: MIT][license-shield]][license-url]
 
 # A simple calculator created with react and electron
 
